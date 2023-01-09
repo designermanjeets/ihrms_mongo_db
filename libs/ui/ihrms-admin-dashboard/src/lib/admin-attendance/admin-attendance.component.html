@@ -1,0 +1,43 @@
+<ihrms-gridster
+  [gridsterOptions]=gridsterOptions
+  [dashboardItems]=dashboardItems
+  [resize$]='gridResize'
+>
+</ihrms-gridster>
+
+<!-- Dialog template -->
+<ng-template #preUploadDialog let-data>
+  <h2 matDialogTitle>Kindly correct below records and upload again.</h2>
+  <mat-dialog-content ihrmsUtil>
+      <ng-container>
+        <h4 ihrmsUtil marginBottom="0" class="bold">
+         
+        </h4>      
+        <!--Grid-->
+        <ihrms-grid
+          ihrmsUtil
+          marginBottom="20"
+          style='height: auto'
+          [height]='200'
+          [isMultiChartCard]="true"
+          [columnFit]='preUploadData.columnFit'
+          [title]='preUploadData.title'
+          [rowData]='data'
+          [rowSelection]="'multiple'"
+          [columnDefs]='preUploadData.gridData?.columnDefs'
+          [pagination]="preUploadData.pagination"
+          [paginationPageSize]="preUploadData.paginationPageSize"
+          [paginationAutoPageSize]="preUploadData.paginationAutoPageSize"
+          [updateGridFromOutside]="preUploadData.gridData?.updateGridFromOutside"
+          (onGridReadyOut)='preUploadGridReady($event)'
+        >
+        </ihrms-grid>
+        <!--Grid-->
+      </ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button (click)='UploadAttendanceData($event)' color="primary" class='mid-button'>Upload</button>
+    <button mat-raised-button [mat-dialog-close]="0" color="primary" class='mid-button'>Close</button>
+  </mat-dialog-actions>
+</ng-template>
+<!-- Dialog template #2 -->

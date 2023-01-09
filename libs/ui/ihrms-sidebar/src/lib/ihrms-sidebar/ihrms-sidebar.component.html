@@ -1,0 +1,11 @@
+<section class='ihrms-sidebar scrollable nopadd' fxLayout='column' fxFill [ngStyle]="{ 'width.px': sideBarWidth }">
+  <h1 class='sidebar-logo' ihrmsUtil marginTop='50' marginBottom='50' textAlign='center'>
+    <span *ngIf='opened; else smallLogo'>Company Logo</span>
+    <ng-template #smallLogo>Logo</ng-template>
+  </h1>
+
+  <mat-nav-list>
+    <ihrms-menu-item (click)='onNavItemClick($event, item)' *ngFor="let item of navItems" [item]="item" [opened]='opened'></ihrms-menu-item>
+  </mat-nav-list>
+
+</section>
